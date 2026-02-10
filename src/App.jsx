@@ -197,20 +197,20 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-4 flex items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-2 sm:p-4 flex items-center justify-center">
       <div className="w-full max-w-5xl">
         {/* Main Card */}
-        <div className="glass-card rounded-3xl overflow-hidden shadow-2xl border border-white/5">
+        <div className="glass-card rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-white/5">
           {/* Header */}
           <div className="relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 opacity-90"></div>
             <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
-            <div className="relative px-8 py-10">
-              <div className="flex items-center justify-between mb-2">
+            <div className="relative px-4 sm:px-8 py-6 sm:py-10">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-2">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center flex-shrink-0">
                     <svg
-                      className="w-7 h-7 text-white"
+                      className="w-6 h-6 sm:w-7 sm:h-7 text-white"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -224,24 +224,24 @@ const App = () => {
                     </svg>
                   </div>
                   <div>
-                    <h1 className="text-4xl font-bold text-white tracking-tight">
+                    <h1 className="text-2xl sm:text-4xl font-bold text-white tracking-tight">
                       Bitget Risk-Reward Calculator
                     </h1>
-                    <p className="text-purple-100 mt-1">
+                    <p className="text-purple-100 mt-1 text-xs sm:text-base">
                       Professional crypto trading with smart risk management
                     </p>
                   </div>
                 </div>
-                <div className="text-right">
-                  <div className="text-white/90 text-sm font-medium">
+                <div className="text-left sm:text-right w-full sm:w-auto">
+                  <div className="text-white/90 text-xs sm:text-sm font-medium">
                     Exchange Rate
                   </div>
-                  <div className="text-2xl font-bold text-white flex items-center gap-2">
+                  <div className="text-lg sm:text-2xl font-bold text-white flex items-center gap-2">
                     $1 = {formatPHP(1)}
                     <button
                       onClick={fetchExchangeRate}
                       disabled={isLoadingRate}
-                      className="p-1.5 hover:bg-white/10 rounded-lg transition-colors"
+                      className="p-1.5 hover:bg-white/10 rounded-lg transition-colors touch-manipulation"
                       title="Refresh exchange rate"
                     >
                       <svg
@@ -264,19 +264,19 @@ const App = () => {
             </div>
           </div>
 
-          <div className="p-8">
+          <div className="p-4 sm:p-8">
             {/* Position Type Toggle */}
-            <div className="mb-8">
-              <label className="block text-slate-400 text-sm font-semibold mb-3 uppercase tracking-wide">
+            <div className="mb-6 sm:mb-8">
+              <label className="block text-slate-400 text-xs sm:text-sm font-semibold mb-3 uppercase tracking-wide">
                 Position Type
               </label>
-              <div className="flex gap-3">
+              <div className="flex gap-2 sm:gap-3">
                 <button
                   onClick={() => setPositionType("long")}
                   className={`position-toggle ${positionType === "long" ? "active-long" : "inactive"}`}
                 >
                   <svg
-                    className="w-5 h-5"
+                    className="w-4 h-4 sm:w-5 sm:h-5"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -288,15 +288,17 @@ const App = () => {
                       d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
                     />
                   </svg>
-                  <span className="font-bold">LONG</span>
-                  <span className="text-xs opacity-75">Buy Low, Sell High</span>
+                  <span className="font-bold text-sm sm:text-base">LONG</span>
+                  <span className="text-xs opacity-75 hidden sm:block">
+                    Buy Low, Sell High
+                  </span>
                 </button>
                 <button
                   onClick={() => setPositionType("short")}
                   className={`position-toggle ${positionType === "short" ? "active-short" : "inactive"}`}
                 >
                   <svg
-                    className="w-5 h-5"
+                    className="w-4 h-4 sm:w-5 sm:h-5"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -308,17 +310,19 @@ const App = () => {
                       d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"
                     />
                   </svg>
-                  <span className="font-bold">SHORT</span>
-                  <span className="text-xs opacity-75">Sell High, Buy Low</span>
+                  <span className="font-bold text-sm sm:text-base">SHORT</span>
+                  <span className="text-xs opacity-75 hidden sm:block">
+                    Sell High, Buy Low
+                  </span>
                 </button>
               </div>
             </div>
 
             {/* Risk Management Section */}
-            <div className="mb-8 p-6 bg-gradient-to-br from-purple-500/10 to-indigo-500/10 border border-purple-500/20 rounded-2xl">
-              <h3 className="text-lg font-bold text-purple-300 mb-4 flex items-center gap-2">
+            <div className="mb-6 sm:mb-8 p-4 sm:p-6 bg-gradient-to-br from-purple-500/10 to-indigo-500/10 border border-purple-500/20 rounded-xl sm:rounded-2xl">
+              <h3 className="text-base sm:text-lg font-bold text-purple-300 mb-4 flex items-center gap-2">
                 <svg
-                  className="w-5 h-5"
+                  className="w-4 h-4 sm:w-5 sm:h-5"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -333,7 +337,7 @@ const App = () => {
                 Risk Management Settings
               </h3>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                 {/* Total Capital */}
                 <div className="input-group">
                   <label className="input-label">
@@ -452,7 +456,7 @@ const App = () => {
             </div>
 
             {/* Price Inputs */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
               {/* Entry Price */}
               <div className="input-group">
                 <label className="input-label">
@@ -588,11 +592,13 @@ const App = () => {
                   className={`ratio-card bg-gradient-to-br from-${color}-500/10 to-${color}-600/5 border-${color}-500/20`}
                 >
                   <div className="text-center">
-                    <p className="text-slate-500 text-sm font-medium uppercase tracking-wider mb-3">
+                    <p className="text-slate-500 text-xs sm:text-sm font-medium uppercase tracking-wider mb-3">
                       Risk-Reward Ratio
                     </p>
-                    <div className="flex items-center justify-center gap-4">
-                      <div className={`text-6xl font-black text-${color}-400`}>
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
+                      <div
+                        className={`text-4xl sm:text-6xl font-black text-${color}-400`}
+                      >
                         1:{results.ratio.toFixed(2)}
                       </div>
                       <div
@@ -606,9 +612,9 @@ const App = () => {
 
                 {/* Position Sizing Info */}
                 {totalCapital && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                     <div className="position-card">
-                      <h4 className="text-indigo-300 font-semibold mb-4 flex items-center gap-2">
+                      <h4 className="text-indigo-300 font-semibold mb-4 flex items-center gap-2 text-sm sm:text-base">
                         <svg
                           className="w-5 h-5"
                           fill="none"
@@ -711,24 +717,24 @@ const App = () => {
                 )}
 
                 {/* Stats Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   {/* Risk Card */}
                   <div className="stat-card group hover:border-rose-500/30 transition-all duration-300">
                     <div className="flex items-start justify-between mb-4">
-                      <div>
-                        <p className="text-rose-400 text-sm font-semibold uppercase tracking-wide mb-1">
+                      <div className="flex-1 min-w-0">
+                        <p className="text-rose-400 text-xs sm:text-sm font-semibold uppercase tracking-wide mb-1">
                           Risk per Coin
                         </p>
-                        <p className="text-3xl font-bold text-white">
+                        <p className="text-2xl sm:text-3xl font-bold text-white">
                           ${results.riskPerCoin.toFixed(2)}
                         </p>
-                        <p className="text-rose-400 text-sm mt-1">
+                        <p className="text-rose-400 text-xs sm:text-sm mt-1 truncate">
                           {formatPHP(results.riskPerCoin)}
                         </p>
                       </div>
-                      <div className="w-12 h-12 rounded-xl bg-rose-500/10 flex items-center justify-center group-hover:bg-rose-500/20 transition-colors">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-rose-500/10 flex items-center justify-center group-hover:bg-rose-500/20 transition-colors flex-shrink-0">
                         <svg
-                          className="w-6 h-6 text-rose-400"
+                          className="w-5 h-5 sm:w-6 sm:h-6 text-rose-400"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
@@ -744,11 +750,13 @@ const App = () => {
                     </div>
                     {totalCapital && (
                       <div className="pt-4 border-t border-rose-500/10">
-                        <p className="text-rose-300/70 text-sm">Total Risk</p>
-                        <p className="text-rose-200 text-xl font-bold mt-1">
+                        <p className="text-rose-300/70 text-xs sm:text-sm">
+                          Total Risk
+                        </p>
+                        <p className="text-rose-200 text-lg sm:text-xl font-bold mt-1">
                           ${results.potentialLoss.toFixed(2)}
                         </p>
-                        <p className="text-rose-400 text-sm mt-1">
+                        <p className="text-rose-400 text-xs sm:text-sm mt-1 truncate">
                           {formatPHP(results.potentialLoss)}
                         </p>
                       </div>
@@ -758,20 +766,20 @@ const App = () => {
                   {/* Reward Card */}
                   <div className="stat-card group hover:border-emerald-500/30 transition-all duration-300">
                     <div className="flex items-start justify-between mb-4">
-                      <div>
-                        <p className="text-emerald-400 text-sm font-semibold uppercase tracking-wide mb-1">
+                      <div className="flex-1 min-w-0">
+                        <p className="text-emerald-400 text-xs sm:text-sm font-semibold uppercase tracking-wide mb-1">
                           Reward per Coin
                         </p>
-                        <p className="text-3xl font-bold text-white">
+                        <p className="text-2xl sm:text-3xl font-bold text-white">
                           ${results.rewardPerCoin.toFixed(2)}
                         </p>
-                        <p className="text-emerald-400 text-sm mt-1">
+                        <p className="text-emerald-400 text-xs sm:text-sm mt-1 truncate">
                           {formatPHP(results.rewardPerCoin)}
                         </p>
                       </div>
-                      <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors flex-shrink-0">
                         <svg
-                          className="w-6 h-6 text-emerald-400"
+                          className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-400"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
@@ -787,13 +795,13 @@ const App = () => {
                     </div>
                     {totalCapital && (
                       <div className="pt-4 border-t border-emerald-500/10">
-                        <p className="text-emerald-300/70 text-sm">
+                        <p className="text-emerald-300/70 text-xs sm:text-sm">
                           Total Profit
                         </p>
-                        <p className="text-emerald-200 text-xl font-bold mt-1">
+                        <p className="text-emerald-200 text-lg sm:text-xl font-bold mt-1">
                           ${results.potentialProfit.toFixed(2)}
                         </p>
-                        <p className="text-emerald-400 text-sm mt-1">
+                        <p className="text-emerald-400 text-xs sm:text-sm mt-1 truncate">
                           {formatPHP(results.potentialProfit)}
                         </p>
                       </div>
@@ -803,11 +811,11 @@ const App = () => {
 
                 {/* Visual Ratio Bar */}
                 <div className="ratio-bar-container">
-                  <p className="text-slate-400 text-sm font-medium mb-4 flex items-center gap-2">
+                  <p className="text-slate-400 text-xs sm:text-sm font-medium mb-4 flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-indigo-400"></span>
                     Visual Breakdown
                   </p>
-                  <div className="flex gap-3 h-16">
+                  <div className="flex gap-2 sm:gap-3 h-12 sm:h-16">
                     <div className="risk-bar">
                       <span className="bar-label">Risk 1x</span>
                     </div>
@@ -824,9 +832,9 @@ const App = () => {
             {/* Empty State */}
             {!results && (
               <div className="empty-state">
-                <div className="w-20 h-20 rounded-2xl bg-indigo-500/10 flex items-center justify-center mb-4 mx-auto">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-indigo-500/10 flex items-center justify-center mb-4 mx-auto">
                   <svg
-                    className="w-10 h-10 text-indigo-400"
+                    className="w-8 h-8 sm:w-10 sm:h-10 text-indigo-400"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -839,7 +847,7 @@ const App = () => {
                     />
                   </svg>
                 </div>
-                <p className="text-slate-400 text-center">
+                <p className="text-slate-400 text-center text-sm sm:text-base px-4">
                   Enter your trade parameters to calculate risk-reward ratio
                 </p>
               </div>
@@ -849,11 +857,11 @@ const App = () => {
 
         {/* Pro Tips */}
         <div className="tip-card">
-          <div className="flex gap-4">
+          <div className="flex gap-3 sm:gap-4">
             <div className="flex-shrink-0">
-              <div className="w-10 h-10 rounded-lg bg-indigo-500/20 flex items-center justify-center">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-indigo-500/20 flex items-center justify-center">
                 <svg
-                  className="w-5 h-5 text-indigo-400"
+                  className="w-4 h-4 sm:w-5 sm:h-5 text-indigo-400"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -867,27 +875,27 @@ const App = () => {
                 </svg>
               </div>
             </div>
-            <div>
-              <p className="text-indigo-300 font-semibold mb-1">
+            <div className="flex-1 min-w-0">
+              <p className="text-indigo-300 font-semibold mb-1 text-sm sm:text-base">
                 Bitget Trading Tips
               </p>
-              <p className="text-slate-400 text-sm leading-relaxed">
+              <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
                 <span className="font-semibold text-emerald-400">
                   Risk 1-2%
                 </span>{" "}
                 of total capital per trade.
-                <span className="mx-2">•</span>
+                <span className="mx-1 sm:mx-2">•</span>
                 <span className="font-semibold text-blue-400">
                   Allocate 10-25%
                 </span>{" "}
                 max per position to avoid overexposure.
-                <span className="mx-2">•</span>
+                <span className="mx-1 sm:mx-2">•</span>
                 Use{" "}
                 <span className="font-semibold text-purple-400">
                   low leverage (1-3x)
                 </span>{" "}
                 for safer trades.
-                <span className="mx-2">•</span>
+                <span className="mx-1 sm:mx-2">•</span>
                 Aim for minimum{" "}
                 <span className="font-semibold text-amber-400">
                   1:2 R:R
@@ -933,14 +941,24 @@ const App = () => {
 
         .position-toggle {
           flex: 1;
-          padding: 1rem;
+          padding: 0.75rem;
           border-radius: 1rem;
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 0.5rem;
+          gap: 0.375rem;
           transition: all 0.3s;
           border: 2px solid;
+          min-height: 80px;
+          touch-action: manipulation;
+        }
+
+        @media (min-width: 640px) {
+          .position-toggle {
+            padding: 1rem;
+            gap: 0.5rem;
+            min-height: auto;
+          }
         }
 
         .active-long {
@@ -997,10 +1015,17 @@ const App = () => {
         }
 
         .position-card {
-          padding: 1.5rem;
+          padding: 1rem;
           background: rgba(30, 41, 59, 0.4);
           border: 1px solid rgba(71, 85, 105, 0.3);
-          border-radius: 1.25rem;
+          border-radius: 1rem;
+        }
+
+        @media (min-width: 640px) {
+          .position-card {
+            padding: 1.5rem;
+            border-radius: 1.25rem;
+          }
         }
 
         .input-group {
@@ -1010,21 +1035,37 @@ const App = () => {
         .input-label {
           display: flex;
           align-items: center;
+          flex-wrap: wrap;
           margin-bottom: 0.5rem;
-          font-size: 0.875rem;
+          font-size: 0.75rem;
           font-weight: 600;
+          gap: 0.25rem;
+        }
+
+        @media (min-width: 640px) {
+          .input-label {
+            font-size: 0.875rem;
+          }
         }
 
         .input-field {
           width: 100%;
-          padding: 1rem;
+          padding: 0.875rem 1rem;
           background: rgba(30, 41, 59, 0.5);
           border: 1px solid rgba(71, 85, 105, 0.3);
           border-radius: 0.75rem;
           color: white;
-          font-size: 1.125rem;
+          font-size: 1rem;
           font-weight: 600;
           transition: all 0.2s;
+          min-height: 48px;
+        }
+
+        @media (min-width: 640px) {
+          .input-field {
+            padding: 1rem;
+            font-size: 1.125rem;
+          }
         }
 
         .input-field:focus {
@@ -1040,33 +1081,61 @@ const App = () => {
         }
 
         .ratio-card {
-          padding: 2rem;
-          border-radius: 1.5rem;
+          padding: 1.5rem;
+          border-radius: 1.25rem;
           border: 1px solid;
         }
 
+        @media (min-width: 640px) {
+          .ratio-card {
+            padding: 2rem;
+            border-radius: 1.5rem;
+          }
+        }
+
         .status-badge {
-          padding: 0.5rem 1rem;
+          padding: 0.375rem 0.75rem;
           border-radius: 9999px;
           border: 1px solid;
-          font-size: 0.875rem;
+          font-size: 0.75rem;
           font-weight: 700;
           text-transform: uppercase;
           letter-spacing: 0.05em;
         }
 
+        @media (min-width: 640px) {
+          .status-badge {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+          }
+        }
+
         .stat-card {
-          padding: 1.5rem;
+          padding: 1rem;
           background: rgba(30, 41, 59, 0.4);
           border: 1px solid rgba(71, 85, 105, 0.3);
-          border-radius: 1.25rem;
+          border-radius: 1rem;
+        }
+
+        @media (min-width: 640px) {
+          .stat-card {
+            padding: 1.5rem;
+            border-radius: 1.25rem;
+          }
         }
 
         .ratio-bar-container {
-          padding: 1.5rem;
+          padding: 1rem;
           background: rgba(30, 41, 59, 0.3);
           border: 1px solid rgba(71, 85, 105, 0.2);
-          border-radius: 1.25rem;
+          border-radius: 1rem;
+        }
+
+        @media (min-width: 640px) {
+          .ratio-bar-container {
+            padding: 1.5rem;
+            border-radius: 1.25rem;
+          }
         }
 
         .risk-bar {
@@ -1081,6 +1150,7 @@ const App = () => {
           display: flex;
           align-items: center;
           justify-content: center;
+          min-height: 48px;
         }
 
         .reward-bar {
@@ -1094,27 +1164,50 @@ const App = () => {
           display: flex;
           align-items: center;
           justify-content: center;
+          min-height: 48px;
         }
 
         .bar-label {
           color: white;
-          font-size: 0.875rem;
+          font-size: 0.75rem;
           font-weight: 700;
           text-transform: uppercase;
           letter-spacing: 0.05em;
+          padding: 0 0.5rem;
+          text-align: center;
+        }
+
+        @media (min-width: 640px) {
+          .bar-label {
+            font-size: 0.875rem;
+          }
         }
 
         .empty-state {
-          padding: 4rem 2rem;
+          padding: 3rem 1rem;
+        }
+
+        @media (min-width: 640px) {
+          .empty-state {
+            padding: 4rem 2rem;
+          }
         }
 
         .tip-card {
-          margin-top: 1.5rem;
-          padding: 1.25rem;
+          margin-top: 1rem;
+          padding: 1rem;
           background: rgba(15, 23, 42, 0.6);
           backdrop-filter: blur(20px);
           border: 1px solid rgba(99, 102, 241, 0.2);
-          border-radius: 1rem;
+          border-radius: 0.75rem;
+        }
+
+        @media (min-width: 640px) {
+          .tip-card {
+            margin-top: 1.5rem;
+            padding: 1.25rem;
+            border-radius: 1rem;
+          }
         }
       `}</style>
     </div>
